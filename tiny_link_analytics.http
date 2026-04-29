@@ -1,0 +1,10 @@
+@tiny_link_analytics_HostAddress = http://localhost:5016
+
+GET {{tiny_link_analytics_HostAddress}}/WeatherForecast
+Accept: application/json
+
+###
+
+GET {{tiny_link_analytics_HostAddress}}/swagger/index.html
+
+###

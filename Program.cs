@@ -1,0 +1,32 @@
+using tiny_link_analytics.Services.Interfaces;
+using tiny_link_analytics.Services;
+using tiny_link_analytics.Models;
+using Scalar.AspNetCore;
+
+
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container.
+builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ShortUrlProfile>());
+builder.Services.AddScoped<IShortUrlService, ShortUrlService>();
+builder.Services.AddControllers();
+builder.Services.AddOpenApi();
+
+
+var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
+app.MapOpenApi();
+app.MapScalarApiReference();
+
+}
+
+app.UseHttpsRedirection();
+
+app.UseAuthorization();
+
+app.MapControllers();
+
+app.Run();
