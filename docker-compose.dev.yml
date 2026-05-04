@@ -1,0 +1,13 @@
+services:
+  api:
+    build:
+      context: .
+      target: dev
+    volumes:
+      - .:/src
+      - nuget_cache:/root/.nuget/packages
+      - /src/bin
+      - /src/obj
+
+volumes:
+  nuget_cache:

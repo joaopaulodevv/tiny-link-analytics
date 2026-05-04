@@ -1,13 +1,19 @@
+using Microsoft.EntityFrameworkCore;
 using tiny_link_analytics.Services.Interfaces;
 using tiny_link_analytics.Services;
 using tiny_link_analytics.Models;
+using tiny_link_analytics.Repositories;
+using tiny_link_analytics.Repositories.Interfaces;
 using Scalar.AspNetCore;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddAutoMapper(cfg => cfg.AddProfile<ShortUrlProfile>());
+builder.Services.AddScoped<IShortUrlRepository, ShortUrlRepository>();
 builder.Services.AddScoped<IShortUrlService, ShortUrlService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
