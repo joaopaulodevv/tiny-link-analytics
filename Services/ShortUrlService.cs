@@ -27,20 +27,8 @@ public class ShortUrlService : IShortUrlService
 
     public async Task<IEnumerable<ShortUrlResponseDto>> ListShortUrlsAsync()
     {
-       ShortUrl newShortUrl = new ShortUrl
-        {
-            OriginalUrl = "request.OriginalUrl",
-            ShortCode = "6767",
-            CreatedAt = DateTime.UtcNow
-        };
+        IEnumerable<ShortUrl> shortUrls = await _repository.GetAllAsync();
 
-        ShortUrl newShortUrl2 = new ShortUrl
-        {
-            OriginalUrl = "request.Origina2lUrl",
-            ShortCode = "67672",
-            CreatedAt = DateTime.UtcNow
-        };
-        IEnumerable<ShortUrl> shortUrls = new List<ShortUrl> { newShortUrl, newShortUrl2 };
         IEnumerable<ShortUrlResponseDto> response = shortUrls.Select(s => s.ToResponseDto());
         return response;
     }
