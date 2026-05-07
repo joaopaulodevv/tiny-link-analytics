@@ -1,19 +1,38 @@
 using Microsoft.AspNetCore.Mvc;
 namespace tiny_link_analytics.Controllers;
 
+using System.Net.Http.Headers;
 using tiny_link_analytics.Models;
 using tiny_link_analytics.Services.Interfaces;
+using tiny_link_analytics.DTOs;
 
 [ApiController]
 [Route("api/[controller]")]
-public class ShortUrlController : ControllerBase
+public class ShortUrlsController : ControllerBase
 {
     private readonly IShortUrlService _shortUrlService;
     
-    public ShortUrlController(IShortUrlService shortUrlService)
+    public ShortUrlsController(IShortUrlService shortUrlService)
     {
         _shortUrlService = shortUrlService;
     }
+
+    [HttpPost]
+    public async Task<ActionResult<ShortUrlResponseDto>> Create([FromBody] ShortUrlRequestDto request)
+    {
+        
+        ShortUrlResponseDto response = await _shortUrlService.CreateShortUrlAsync(request);
+        return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<ShortUrlResponseDto>> GetById(int id)
+    {
+        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlById(id);
+        return (response==null) ? NotFound() : Ok(response);
+        
+    }
+
     
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ShortUrlResponseDto>>> Get()

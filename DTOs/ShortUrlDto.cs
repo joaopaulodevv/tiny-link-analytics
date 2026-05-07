@@ -1,9 +1,11 @@
-namespace tiny_link_analytics.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace tiny_link_analytics.DTOs;
 
 public record ShortUrlResponseDto
 {
     public int Id { get; set; }
-    public string OriginalUrl { get; set; } = string.Empty;
+    public required string OriginalUrl { get; set; } 
 
     public DateTime CreatedAt { get; set; }
 
@@ -12,5 +14,8 @@ public record ShortUrlResponseDto
 
 public record ShortUrlRequestDto
 {
-    public string OriginalUrl { get; set; } = string.Empty;
+    [Required]
+    [Url]
+    [MaxLength(2048)]
+    public required string OriginalUrl { get; set; } 
 }

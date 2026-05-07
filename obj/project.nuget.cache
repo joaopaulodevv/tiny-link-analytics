@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "LkcT5rg0FGM=",
+  "dgSpecHash": "/FvgIaJnVfk=",
   "success": true,
   "projectFilePath": "/home/joaopaulo/Desktop/tiny_link_analytics/tiny_link_analytics.csproj",
   "expectedPackageFiles": [
     "/home/joaopaulo/.nuget/packages/automapper/16.1.1/automapper.16.1.1.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
+    "/home/joaopaulo/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/10.0.7/microsoft.aspnetcore.authentication.jwtbearer.10.0.7.nupkg.sha512",
+    "/home/joaopaulo/.nuget/packages/microsoft.aspnetcore.identity.entityframeworkcore/10.0.7/microsoft.aspnetcore.identity.entityframeworkcore.10.0.7.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.aspnetcore.openapi/10.0.7/microsoft.aspnetcore.openapi.10.0.7.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.build.framework/18.0.2/microsoft.build.framework.18.0.2.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.codeanalysis.analyzers/3.11.0/microsoft.codeanalysis.analyzers.3.11.0.nupkg.sha512",
@@ -23,6 +25,8 @@
     "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.abstractions/8.14.0/microsoft.identitymodel.abstractions.8.14.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.jsonwebtokens/8.14.0/microsoft.identitymodel.jsonwebtokens.8.14.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.logging/8.14.0/microsoft.identitymodel.logging.8.14.0.nupkg.sha512",
+    "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.protocols/8.0.1/microsoft.identitymodel.protocols.8.0.1.nupkg.sha512",
+    "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.protocols.openidconnect/8.0.1/microsoft.identitymodel.protocols.openidconnect.8.0.1.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.identitymodel.tokens/8.14.0/microsoft.identitymodel.tokens.8.14.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.openapi/2.0.0/microsoft.openapi.2.0.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/microsoft.visualstudio.solutionpersistence/1.0.52/microsoft.visualstudio.solutionpersistence.1.0.52.nupkg.sha512",
@@ -37,7 +41,18 @@
     "/home/joaopaulo/.nuget/packages/system.composition.convention/9.0.0/system.composition.convention.9.0.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/system.composition.hosting/9.0.0/system.composition.hosting.9.0.0.nupkg.sha512",
     "/home/joaopaulo/.nuget/packages/system.composition.runtime/9.0.0/system.composition.runtime.9.0.0.nupkg.sha512",
-    "/home/joaopaulo/.nuget/packages/system.composition.typedparts/9.0.0/system.composition.typedparts.9.0.0.nupkg.sha512"
+    "/home/joaopaulo/.nuget/packages/system.composition.typedparts/9.0.0/system.composition.typedparts.9.0.0.nupkg.sha512",
+    "/home/joaopaulo/.nuget/packages/system.identitymodel.tokens.jwt/8.0.1/system.identitymodel.tokens.jwt.8.0.1.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1900",
+      "level": "Warning",
+      "message": "Error occurred while getting package vulnerability data: Unable to load the service index for source https://api.nuget.org/v3/index.json.",
+      "projectPath": "/home/joaopaulo/Desktop/tiny_link_analytics/tiny_link_analytics.csproj",
+      "warningLevel": 1,
+      "filePath": "/home/joaopaulo/Desktop/tiny_link_analytics/tiny_link_analytics.csproj",
+      "targetGraphs": []
+    }
+  ]
 }

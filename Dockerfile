@@ -1,3 +1,9 @@
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS dev
+WORKDIR /src
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://+:8080
+ENTRYPOINT ["dotnet", "run", "--no-launch-profile"]
+
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
