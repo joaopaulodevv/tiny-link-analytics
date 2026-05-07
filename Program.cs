@@ -16,7 +16,8 @@ builder.Services.AddScoped<IShortUrlRepository, ShortUrlRepository>();
 builder.Services.AddScoped<IShortUrlService, ShortUrlService>();
 builder.Services.AddControllers();
 builder.Services.AddOpenApi();
-
+builder.Services.AddAuthentication().AddJwtBearer();
+builder.Services.AddAuthorization();
 
 var app = builder.Build();
 

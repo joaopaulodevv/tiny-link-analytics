@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tiny_link_analytics")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e935f1112f871569d373c20643bd9f97fb422603")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0949bb79a7cce04bbdd48b6e09f4ed1ff719e413")]
 [assembly: System.Reflection.AssemblyProductAttribute("tiny_link_analytics")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tiny_link_analytics")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

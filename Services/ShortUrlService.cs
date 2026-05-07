@@ -32,5 +32,11 @@ public class ShortUrlService : IShortUrlService
         IEnumerable<ShortUrlResponseDto> response = shortUrls.Select(s => s.ToResponseDto());
         return response;
     }
+
+    public async Task<ShortUrlResponseDto?> GetShortUrlById(int id)
+        {
+            ShortUrl? response = await _repository.GetByIdAsync(id);
+            return (response != null) ? response.ToResponseDto(): null;
+        }
 }
 }

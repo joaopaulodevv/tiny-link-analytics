@@ -127,3 +127,8 @@
 /home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.MSBuild.resources.dll
 /home/joaopaulo/Desktop/tiny_link_analytics/obj/Debug/net10.0/tiny_link_analytics.sourcelink.json
+/home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.dll
+/home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/joaopaulo/Desktop/tiny_link_analytics/bin/Debug/net10.0/System.IdentityModel.Tokens.Jwt.dll
