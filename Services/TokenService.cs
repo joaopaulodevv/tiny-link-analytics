@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Text;
 using tiny_link_analytics.Models;
 using Microsoft.IdentityModel.Tokens;
+using tiny_link_analytics.Services.Interfaces;
 
 namespace tiny_link_analytics.Services;
 

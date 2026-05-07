@@ -1,4 +1,4 @@
-
+namespace tiny_link_analytics.DTOs;
 using System.ComponentModel.DataAnnotations;
 
 public record AppUserRegisterDto
@@ -22,3 +22,4 @@ public record AppUserLoginDto
     [Required]
     public required string Password { get; set; }
 }
+

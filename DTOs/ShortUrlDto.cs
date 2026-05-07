@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace tiny_link_analytics.Models;
+namespace tiny_link_analytics.DTOs;
 
 public record ShortUrlResponseDto
 {

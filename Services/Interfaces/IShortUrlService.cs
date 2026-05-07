@@ -1,5 +1,5 @@
 namespace tiny_link_analytics.Services.Interfaces;
-using tiny_link_analytics.Models;
+using tiny_link_analytics.DTOs;
 
 public interface IShortUrlService
 {

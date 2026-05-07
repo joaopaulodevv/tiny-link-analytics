@@ -1,5 +1,7 @@
-namespace tiny_link_analytics.Repositories{
+namespace tiny_link_analytics.Repositories;
+
 using Microsoft.EntityFrameworkCore;
+using tiny_link_analytics.Data;
 using tiny_link_analytics.Models;
 using tiny_link_analytics.Repositories.Interfaces;
 
@@ -49,5 +51,4 @@ public class ShortUrlRepository : IShortUrlRepository
         _context.Entry(shortUrl).State = EntityState.Modified;
         await _context.SaveChangesAsync();
     }
-}
 }

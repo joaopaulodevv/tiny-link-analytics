@@ -1,6 +1,6 @@
 using tiny_link_analytics.Models;
 
-namespace tiny_link_analytics.Services;
+namespace tiny_link_analytics.Services.Interfaces;
 
 public interface ITokenService
 {

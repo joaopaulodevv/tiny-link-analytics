@@ -1,0 +1,18 @@
+@host = http://localhost:8080
+
+### Create a short url
+POST {{host}}/api/shorturls
+Content-Type: application/json
+
+{
+  "originalUrl": "https://example.com/some/long/path"
+}
+
+### List all short urls
+GET {{host}}/api/shorturls
+Accept: application/json
+
+### Get a short url by id
+@id = 8
+GET {{host}}/api/shorturls/{{id}}
+Accept: application/json

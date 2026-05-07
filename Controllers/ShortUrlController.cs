@@ -4,6 +4,7 @@ namespace tiny_link_analytics.Controllers;
 using System.Net.Http.Headers;
 using tiny_link_analytics.Models;
 using tiny_link_analytics.Services.Interfaces;
+using tiny_link_analytics.DTOs;
 
 [ApiController]
 [Route("api/[controller]")]

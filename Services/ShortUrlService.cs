@@ -1,10 +1,12 @@
-namespace tiny_link_analytics.Services{
+namespace tiny_link_analytics.Services;
 
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.IdentityModel.Tokens;
 using tiny_link_analytics.Models;
 using tiny_link_analytics.Services.Interfaces;
 using tiny_link_analytics.Repositories.Interfaces;
+using tiny_link_analytics.Mappings;
+using tiny_link_analytics.DTOs;
 
 public class ShortUrlService : IShortUrlService
 {
@@ -38,5 +40,4 @@ public class ShortUrlService : IShortUrlService
             ShortUrl? response = await _repository.GetByIdAsync(id);
             return (response != null) ? response.ToResponseDto(): null;
         }
-}
 }
