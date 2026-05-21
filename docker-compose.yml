@@ -18,7 +18,7 @@ services:
 
   api:
     build:
-      context: .
+      context: ./src/Shortener
       target: dev
     container_name: tiny_link_api
     ports:
@@ -27,7 +27,7 @@ services:
       ASPNETCORE_ENVIRONMENT: Development
       ConnectionStrings__DefaultConnection: "Host=postgres;Port=5432;Database=tiny_link;Username=postgres;Password=postgres"
     volumes:
-      - .:/src
+      - ./src/Shortener:/src
       - nuget_cache:/root/.nuget/packages
       - /src/bin
       - /src/obj
