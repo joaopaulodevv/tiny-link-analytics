@@ -50,7 +50,7 @@ That said, the chosen split has genuine architectural merit:
 
 ## Tech Stack
 
-- **.NET 8 / ASP.NET Core** — REST APIs (Shortener, Redirector)
+- **.NET 10 / ASP.NET Core** — REST APIs (Shortener, Redirector)
 - **Entity Framework Core** — ORM and migrations
 - **PostgreSQL** — relational data store
 - **Redis** — caching layer
@@ -93,7 +93,6 @@ That said, the chosen split has genuine architectural merit:
 4. **RabbitMQ integration** — publish click events from the Redirector
 5. **Analytics Workers** — consume click events and persist aggregated analytics
 6. **Integration tests** — cover the end-to-end flow across services
-7. **Observability** — structured logging and basic metrics (Prometheus + Grafana)
 
 ---
 
