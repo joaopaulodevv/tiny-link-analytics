@@ -1,6 +1,9 @@
 using System.ComponentModel.DataAnnotations;
+using Microsoft.EntityFrameworkCore;
 
 namespace Shortener.Models;
+
+[Index(nameof(ShortCode), IsUnique = true)]
 public class ShortUrl
 {
     [Key]
