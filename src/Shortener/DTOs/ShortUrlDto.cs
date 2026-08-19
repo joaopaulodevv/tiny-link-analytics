@@ -10,6 +10,8 @@ public record ShortUrlResponseDto
     public DateTime CreatedAt { get; set; }
 
     public int Hits { get; set; } = 0;
+
+    public string? ShortUrl { get; set; }
 }
 
 public record ShortUrlRequestDto

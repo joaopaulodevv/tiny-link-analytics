@@ -7,6 +7,7 @@ using Shortener.Services.Interfaces;
 using Shortener.Repositories.Interfaces;
 using Shortener.Mappings;
 using Shortener.DTOs;
+using Base62;
 
 public class ShortUrlService : IShortUrlService
 {
