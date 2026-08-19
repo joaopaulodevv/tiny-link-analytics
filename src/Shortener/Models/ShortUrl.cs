@@ -10,11 +10,14 @@ public class ShortUrl
     [Key]
     public int Id { get; set; }
     [Required]
-    public string OriginalUrl { get; set; } = string.Empty;
+    public string OriginalUrl { get; set; } = null!;
     
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    [ForeignKey(nameof(AppUser))]
+    [Required]
+    public string OwnerId { get; set; } = null!;
+
+    [ForeignKey(nameof(OwnerId))]
     public AppUser? Owner { get; set; }
 
     public int Hits { get; set; } = 0;

@@ -18,10 +18,11 @@ public class ShortUrlService : IShortUrlService
             _repository = repository;
         }
 
-    public async Task<ShortUrlResult> CreateShortUrlAsync(ShortUrlRequestDto request)
+    public async Task<ShortUrlResult> CreateShortUrlAsync(ShortUrlRequestDto request, string userId)
     {   
         ShortUrl shortUrl = request.ToEntity();
 
+        shortUrl.OwnerId = userId; 
         if(await _repository.GetShortUrlByUrlAsync(shortUrl.OriginalUrl) != null)
         {
             return new ShortUrlResult(ShortUrlStatus.URLAlreadyInUse, null);
@@ -33,17 +34,17 @@ public class ShortUrlService : IShortUrlService
         return new ShortUrlResult(ShortUrlStatus.Active, response);
     }
 
-    public async Task<IEnumerable<ShortUrlResponseDto>> ListShortUrlsAsync()
+    public async Task<IEnumerable<ShortUrlResponseDto>> ListShortUrlsAsync(string userId)
     {
-        IEnumerable<ShortUrl> shortUrls = await _repository.GetAllAsync();
+        IEnumerable<ShortUrl> shortUrls = await _repository.GetAllByUserIdAsync(userId);
 
         IEnumerable<ShortUrlResponseDto> response = shortUrls.Select(s => s.ToResponseDto());
         return response;
     }
 
-    public async Task<ShortUrlResponseDto?> GetShortUrlById(int id)
+    public async Task<ShortUrlResponseDto?> GetShortUrlById(int id, string userId)
         {
-            ShortUrl? response = await _repository.GetByIdAsync(id);
+            ShortUrl? response = await _repository.GetByIdAsync(id, userId);
             return (response != null) ? response.ToResponseDto(): null;
         }
 }

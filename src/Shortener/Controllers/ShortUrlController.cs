@@ -22,8 +22,10 @@ public class ShortUrlsController : ControllerBase
     [HttpPost]
     public async Task<ActionResult<ShortUrlResponseDto>> Create([FromBody] ShortUrlRequestDto request)
     {
-        
-        ShortUrlResult response = await _shortUrlService.CreateShortUrlAsync(request);
+        string? UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        if(UserId is null) return Unauthorized();
+
+        ShortUrlResult response = await _shortUrlService.CreateShortUrlAsync(request, UserId);
         if(response.Status == ShortUrlStatus.URLAlreadyInUse)
         {
             return Conflict("URL already in use");
@@ -36,7 +38,10 @@ public class ShortUrlsController : ControllerBase
     [AllowAnonymous]
     public async Task<ActionResult<ShortUrlResponseDto>> GetById(int id)
     {
-        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlById(id);
+        string? UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
+        if(UserId is null) return Unauthorized();
+        
+        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlById(id, UserId);
         return (response==null) ? NotFound() : Ok(response);
         
     }
@@ -45,12 +50,14 @@ public class ShortUrlsController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ShortUrlResponseDto>>> Get()
     {
-        var UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
-        System.Console.WriteLine($"UserId: {UserId}");
+        string? UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        //maybe redundant because this endpoint is protected, but just so the compiler shuts up
         if(UserId is null) return Unauthorized();
 
 
-        IEnumerable<ShortUrlResponseDto> response = await _shortUrlService.ListShortUrlsAsync();
+
+        IEnumerable<ShortUrlResponseDto> response = await _shortUrlService.ListShortUrlsAsync(UserId);
         return Ok(response);
     }
 }   
