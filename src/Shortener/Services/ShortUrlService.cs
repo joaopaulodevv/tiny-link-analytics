@@ -18,14 +18,19 @@ public class ShortUrlService : IShortUrlService
             _repository = repository;
         }
 
-    public async Task<ShortUrlResponseDto> CreateShortUrlAsync(ShortUrlRequestDto request)
+    public async Task<ShortUrlResult> CreateShortUrlAsync(ShortUrlRequestDto request)
     {   
         ShortUrl shortUrl = request.ToEntity();
+
+        if(await _repository.GetShortUrlByUrlAsync(shortUrl.OriginalUrl) != null)
+        {
+            return new ShortUrlResult(ShortUrlStatus.URLAlreadyInUse, null);
+        }
 
         await _repository.CreateAsync(shortUrl);
         ShortUrlResponseDto response = shortUrl.ToResponseDto();
 
-        return response;
+        return new ShortUrlResult(ShortUrlStatus.Active, response);
     }
 
     public async Task<IEnumerable<ShortUrlResponseDto>> ListShortUrlsAsync()

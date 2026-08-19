@@ -1,18 +1,34 @@
 @host = http://localhost:8080
 
-### Create a short url
-POST {{host}}/api/shorturls
+### Login (rode este primeiro; o token vale para os requests abaixo)
+# @name login
+POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-  "originalUrl": "https://example.com/some/long/path"
+  "email": "user@example.com",
+  "password": "secret123"
+}
+
+
+### Create a short url
+@token = {{login.response.body.$.token}}
+
+POST {{host}}/api/shorturls
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "originalUrl": "https://example.com/some/long/paths"
 }
 
 ### List all short urls
 GET {{host}}/api/shorturls
 Accept: application/json
+Authorization: Bearer {{token}}
 
 ### Get a short url by id
 @id = 8
 GET {{host}}/api/shorturls/{{id}}
 Accept: application/json
+Authorization: Bearer {{token}}

@@ -23,8 +23,13 @@ public class ShortUrlsController : ControllerBase
     public async Task<ActionResult<ShortUrlResponseDto>> Create([FromBody] ShortUrlRequestDto request)
     {
         
-        ShortUrlResponseDto response = await _shortUrlService.CreateShortUrlAsync(request);
-        return CreatedAtAction(nameof(Get), new { id = response.Id }, response);
+        ShortUrlResult response = await _shortUrlService.CreateShortUrlAsync(request);
+        if(response.Status == ShortUrlStatus.URLAlreadyInUse)
+        {
+            return Conflict("URL already in use");
+        }
+
+        return CreatedAtAction(nameof(Get), new { id = response.ShortUrl?.Id }, response.ShortUrl);
     }
 
     [HttpGet("{id}")]
@@ -38,9 +43,13 @@ public class ShortUrlsController : ControllerBase
 
     
     [HttpGet]
-    [AllowAnonymous]
     public async Task<ActionResult<IEnumerable<ShortUrlResponseDto>>> Get()
     {
+        var UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+        System.Console.WriteLine($"UserId: {UserId}");
+        if(UserId is null) return Unauthorized();
+
+
         IEnumerable<ShortUrlResponseDto> response = await _shortUrlService.ListShortUrlsAsync();
         return Ok(response);
     }

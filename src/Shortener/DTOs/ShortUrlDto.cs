@@ -19,3 +19,13 @@ public record ShortUrlRequestDto
     [MaxLength(2048)]
     public required string OriginalUrl { get; set; } 
 }
+
+public enum ShortUrlStatus
+{
+    Active,
+    Inactive,
+    Expired,
+    URLAlreadyInUse
+}
+
+public record ShortUrlResult(ShortUrlStatus Status, ShortUrlResponseDto? ShortUrl = null);
