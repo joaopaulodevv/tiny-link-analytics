@@ -2,6 +2,8 @@ FROM mcr.microsoft.com/dotnet/sdk:10.0 AS dev
 WORKDIR /src
 EXPOSE 8080
 ENV ASPNETCORE_URLS=http://+:8080
+RUN dotnet tool install --global dotnet-ef
+ENV PATH="$PATH:/root/.dotnet/tools"
 ENTRYPOINT ["dotnet", "run", "--no-launch-profile"]
 
 FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build

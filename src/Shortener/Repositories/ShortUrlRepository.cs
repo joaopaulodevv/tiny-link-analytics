@@ -41,10 +41,6 @@ public class ShortUrlRepository : IShortUrlRepository
         return await _context.ShortUrls.FindAsync(id);
     }
 
-    public async Task<ShortUrl?> GetByShortCodeAsync(string shortCode)
-    {
-        return await _context.ShortUrls.FirstOrDefaultAsync(s => s.ShortCode == shortCode);
-    }
 
     public async Task UpdateAsync(ShortUrl shortUrl)
     {

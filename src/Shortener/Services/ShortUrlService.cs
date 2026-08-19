@@ -21,6 +21,7 @@ public class ShortUrlService : IShortUrlService
     public async Task<ShortUrlResponseDto> CreateShortUrlAsync(ShortUrlRequestDto request)
     {   
         ShortUrl shortUrl = request.ToEntity();
+
         await _repository.CreateAsync(shortUrl);
         ShortUrlResponseDto response = shortUrl.ToResponseDto();
 
