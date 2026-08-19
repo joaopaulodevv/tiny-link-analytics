@@ -6,7 +6,7 @@ POST {{host}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "user@example.com",
+  "email": "user2@example.com",
   "password": "secret123"
 }
 
@@ -28,7 +28,15 @@ Accept: application/json
 Authorization: Bearer {{token}}
 
 ### Get a short url by id
-@id = 4
+@id = 3
 GET {{host}}/api/shorturls/{{id}}
+Accept: application/json
+Authorization: Bearer {{token}}
+
+
+
+### Get short url stats by id
+@id = 1
+GET {{host}}/api/shorturls/{{id}}/analytics
 Accept: application/json
 Authorization: Bearer {{token}}

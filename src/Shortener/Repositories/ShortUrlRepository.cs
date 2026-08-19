@@ -36,7 +36,7 @@ public class ShortUrlRepository : IShortUrlRepository
         return await _context.ShortUrls.ToListAsync();
     }
 
-    public async Task<ShortUrl?> GetByIdAsync(int id, string userId)
+    public async Task<ShortUrl?> GetAnalyticsByIdAsync(int id, string userId)
     {
         return await _context.ShortUrls.Where(s => s.Id == id && s.OwnerId == userId).FirstOrDefaultAsync();
     }
@@ -55,5 +55,10 @@ public class ShortUrlRepository : IShortUrlRepository
     public async Task<IEnumerable<ShortUrl>> GetAllByUserIdAsync(string userid)
     {
         return await _context.ShortUrls.Where(s => s.Owner.Id == userid).ToListAsync();
+    }
+
+    public async Task<ShortUrl?> GetByIdAsync(int id)
+    {
+        return await _context.ShortUrls.FindAsync(id);
     }
 }

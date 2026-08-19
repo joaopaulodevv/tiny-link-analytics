@@ -43,9 +43,17 @@ public class ShortUrlService : IShortUrlService
         return response;
     }
 
-    public async Task<ShortUrlResponseDto?> GetShortUrlById(int id, string userId)
+    public async Task<ShortUrlResponseDto?> GetShortUrlAnalyticsById(int id, string userId)
         {
-            ShortUrl? response = await _repository.GetByIdAsync(id, userId);
+            ShortUrl? response = await _repository.GetAnalyticsByIdAsync(id, userId);
             return (response != null) ? response.ToResponseDto(): null;
         }
+
+    public async Task<ShortUrlResponseDto?> GetShortUrlById(int id)
+        {
+            ShortUrl? response = await _repository.GetByIdAsync(id);
+            return (response != null) ? response.ToResponseDto(): null;
+        }
+
+
 }

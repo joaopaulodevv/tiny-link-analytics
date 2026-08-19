@@ -5,8 +5,8 @@ namespace Shortener.Repositories.Interfaces;
 public interface IShortUrlRepository
 {
     Task<ShortUrl> CreateAsync(ShortUrl shortUrl);
-    Task<ShortUrl?> GetByIdAsync(int id, string userId);
-
+    Task<ShortUrl?> GetAnalyticsByIdAsync(int id, string userId);
+    Task<ShortUrl?> GetByIdAsync(int id);
     Task<ShortUrl?> GetShortUrlByUrlAsync(string url);
 
     Task<IEnumerable<ShortUrl>> GetAllByUserIdAsync(string userid);

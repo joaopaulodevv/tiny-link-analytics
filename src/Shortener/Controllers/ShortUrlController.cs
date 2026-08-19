@@ -34,18 +34,27 @@ public class ShortUrlsController : ControllerBase
         return CreatedAtAction(nameof(Get), new { id = response.ShortUrl?.Id }, response.ShortUrl);
     }
 
-    [HttpGet("{id}")]
+    [HttpGet("{id}/analytics")]
     [AllowAnonymous]
-    public async Task<ActionResult<ShortUrlResponseDto>> GetById(int id)
+    public async Task<ActionResult<ShortUrlResponseDto>> GetAnalyticsById(int id)
     {
         string? UserId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value ?? string.Empty;
         if(UserId is null) return Unauthorized();
         
-        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlById(id, UserId);
+        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlAnalyticsById(id, UserId);
         return (response==null) ? NotFound() : Ok(response);
         
     }
 
+    [HttpGet("{id}")]
+    [AllowAnonymous]
+    public async Task<ActionResult<ShortUrlResponseDto>> GetById(int id)
+    {
+        
+        ShortUrlResponseDto? response = await _shortUrlService.GetShortUrlById(id);
+        return (response==null) ? NotFound() : Ok(response);
+        
+    }
     
     [HttpGet]
     public async Task<ActionResult<IEnumerable<ShortUrlResponseDto>>> Get()
@@ -54,8 +63,6 @@ public class ShortUrlsController : ControllerBase
 
         //maybe redundant because this endpoint is protected, but just so the compiler shuts up
         if(UserId is null) return Unauthorized();
-
-
 
         IEnumerable<ShortUrlResponseDto> response = await _shortUrlService.ListShortUrlsAsync(UserId);
         return Ok(response);
